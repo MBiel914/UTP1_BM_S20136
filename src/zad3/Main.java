@@ -6,8 +6,9 @@
 
 package zad3;
 
-
-/*<-- niezbędne importy */
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -21,12 +22,11 @@ public class Main {
       "WAW HKT 1000"
     );
     double ratePLNvsEUR = 4.30;
-    List<String> result = 
-    /*<-- tu należy dopisać fragment
-     * przy czym nie wolno używać żadnych własnych klas, jak np. ListCreator
-     * ani też żadnych własnych interfejsów
-     * Podpowiedź: należy użyć strumieni
-     */
+    List<String> result = dest.stream()
+    		.filter(line -> line.split(" ")[0].equals("WAW"))
+    		.map(line -> "to " + line.split(" ")[1] + " - price in PLN:	"
+    					+ String.format("%.0f", Double.parseDouble(line.split(" ")[2]) * ratePLNvsEUR))
+    		.collect(Collectors.toList());
 
     for (String r : result) System.out.println(r);
   }

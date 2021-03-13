@@ -8,6 +8,7 @@ package zad2;
 
 
 import java.util.*;
+import zad1.ListCreator;
 
 public class Main {
 

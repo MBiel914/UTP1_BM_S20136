@@ -5,9 +5,7 @@
  */
 
 package zad1;
-
-
-
+ 
 import java.util.*;
 
 public class Main {
@@ -20,19 +18,15 @@ public class Main {
   }
 
   public List<Integer> test1(List<Integer> src) {
-//    Selector /*<-- definicja selektora; bez lambda-wyrażeń; nazwa zmiennej sel */
-//    Mapper   /*<-- definicja mappera; bez lambda-wyrażeń; nazwa zmiennej map */
-    return null;  /*<-- zwrot wyniku
-      uzyskanego przez wywołanie statycznej metody klasy ListCreator:
-     */  //collectFrom(src).when(sel).mapEvery(map);
+    Selector<List<Integer>> sel;
+    Mapper<List<Integer>> map;
+    return ListCreator.collectFrom(src).when(sel).mapEvery(map);
   }
 
-  public List<Integer> test2(List<String> src) {
-//    Selector /*<-- definicja selektora; bez lambda-wyrażeń; nazwa zmiennej sel */
-//    Mapper   /*<-- definicja mappera; bez lambda-wyrażeń; nazwa zmiennej map */
-    return  null; /*<-- zwrot wyniku
-      uzyskanego przez wywołanie statycznej metody klasy ListCreator:
-     */  //collectFrom(src).when(sel).mapEvery(map);
+public List<Integer> test2(List<String> src) {
+	Selector<List<String>> sel;
+    Mapper<List<String>> map;
+    return  ListCreator.collectFrom(src).when(sel).mapEvery(map);
   }
 
   public static void main(String[] args) {
