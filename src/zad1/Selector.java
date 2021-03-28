@@ -6,5 +6,8 @@
 
 package zad1;
 
-public interface Selector<T> {
+import java.util.List;
+
+public interface Selector<T, U> {
+	public List Select(List<U> list);
 }  

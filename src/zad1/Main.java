@@ -18,17 +18,53 @@ public class Main {
   }
 
   public List<Integer> test1(List<Integer> src) {
-    Selector<List<Integer>> sel;
-    Mapper<List<Integer>> map;
+    Selector<Integer, Integer> sel = new Selector<Integer, Integer>() {
+    	@Override
+    	public List<Integer> Select(List<Integer> list){
+    		List<Integer> result = new ArrayList<>();
+    		for(int item : list)
+    			if (item < 10)
+    				result.add(item);
+    		return result;
+    	}
+    };
+    
+    Mapper<Integer, Integer> map = new Mapper<Integer, Integer>() {
+    	@Override
+    	public List<Integer> Map(List<Integer> list){
+    		List<Integer> result = new ArrayList<>();
+    		for(int item : list)
+    				result.add(item + 10);
+    		return result;
+    	}
+    };
     return ListCreator.collectFrom(src).when(sel).mapEvery(map);
   }
 
-public List<Integer> test2(List<String> src) {
-	Selector<List<String>> sel;
-    Mapper<List<String>> map;
-    return  ListCreator.collectFrom(src).when(sel).mapEvery(map);
+  public List<Integer> test2(List<String> src) {
+	  Selector<Integer, String> sel = new Selector<Integer, String>() {
+	    	@Override
+	    	public List<String> Select(List<String> list){
+	    		List<String> result = new ArrayList<>();
+	    		for(String item : list)
+	    			if (item.length() > 3)
+	    				result.add(item);
+	    		return result;
+	    	}
+	    };
+	    
+	    Mapper<Integer, String> map = new Mapper<Integer, String>() {
+	    	@Override
+	    	public List<Integer> Map(List<String> list){
+	    		List<Integer> result = new ArrayList<>();
+	    		for(String item : list)
+	    				result.add(item.length() + 10);
+	    		return result;
+	    	}
+	    };
+	    return ListCreator.collectFrom(src).when(sel).mapEvery(map);
   }
-
+  
   public static void main(String[] args) {
     new Main();
   }

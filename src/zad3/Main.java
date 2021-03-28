@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 public class Main {
 
   public static void main(String[] args) {
-    // Lista destynacji: port_wylotu port_przylotu cena_EUR 
     List<String> dest = Arrays.asList(
       "bleble bleble 2000",
       "WAW HAV 1200",

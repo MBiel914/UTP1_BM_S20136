@@ -7,16 +7,20 @@
 package zad1;
 import java.util.*;
 
-public class ListCreator<T> {
-	public static <T> List<T> collectFrom(List<T> list) {
-		return list;
+public class ListCreator<T, U> {
+	private List _list;
+	
+	public static <T, U> ListCreator<T, U> collectFrom(List<U> list) {
+		ListCreator<T, U> listCreator = new ListCreator<>();
+		listCreator._list = list;
+		return listCreator;
 	}
-	public ListCreator<T> when(Selector<T> sel) {
+	public ListCreator<T, U> when(Selector sel) {
+		_list = sel.Select(_list);
 		return this;
-		
 	}
-	public ListCreator<T> mapEvery(Mapper<T> map) {
-		return this;
-		
+	public List mapEvery(Mapper map) {
+		_list = map.Map(_list);
+		return _list;
 	}
 }  
